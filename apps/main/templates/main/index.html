@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login and Registration</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" text="text/css" href="{% static 'main/css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="header">Welcome!</h1>
+          <div id="form_field1">
+          <h2 class ="color">Register</h2>
+          <form action="/register_user" method="POST">
+            {% csrf_token %}
+            <div class="fields">
+              <label>Name</label>
+              <input type="text" name="name">
+            </div>
+            <div class="fields">
+              <label>Alias</label>
+              <input type="text" name="alias">
+            </div>
+            <div class="fields">
+              <label>Email</label>
+              <input type="email" name="email">
+            </div>
+            <div class="fields">
+              <label>Date of Birth</label>
+              <input type="date" name="date">
+            </div>
+            <div class="fields">
+              <label>Password</label>
+              <input type="password" name="password">
+            </div>
+            <h5>*Password should be at least 8 characters</h5>
+            <div class="fields">
+              <label>Confirm PW:</label>
+              <input type="password" name="password_confirmation">
+            </div>
+            <div class="submit_buttons">
+              <input type="submit" value="Register">
+            </div>
+          </form>
+           </div>
+
+        <div id="form_field2">
+          <h2 class ="color">Login</h2>
+          <form action="/sessions" method="POST">
+            {% csrf_token %}
+            <div class="fields">
+              <label>Email</label>
+              <input type="text" name="email">
+            </div>
+            <div class="fields">
+              <label>Password</label>
+              <input type="password" name="password">
+            </div>
+            <div class="submit_buttons">
+              <input type="submit" value="Login">
+            </div>
+          </form>
+        </div>
+        {% if messages %}
+          <ul>
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+  </body>
+</html>

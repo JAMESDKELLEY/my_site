@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Quotes</title>
+    <link rel="stylesheet" text="text/css" href="{% static 'main/css/style.css' %}">
+  </head>
+  <body>
+  	<div class="wrapper">
+    <div>
+      <h1>Hello, {{current_user.name}}! </h1>
+    </div>
+    <div>
+        <p><a class ="color" href="/logout">Logout</a></p>
+    </div>
+    <div>
+      <h2 class ="color">Quotable Quotes</h2>
+      {% for quote in quotes %}
+        <p>Quoted by: {{quote.author}}</p>
+        <p>Quote: "{{quote.quote}}"</p>
+        <p>Posted by: <a class ="color" href="/user_profile/{{quote.user.id}}">{{quote.user.name}}</a></p>
+        <p><a class ="color" href="/my_list/{{quote.id}}">Add To My List</a></p>
+      {% endfor %}
+    </div> 
+    <hr>  
+    <div>
+      <h2 class ="color">Your Favorites</h2>
+      {% for favorite in favorites %}
+      <p>Quoted by: {{favorite.quote.author}}</p>
+      <p>Quote: "{{favorite.quote.quote}}"</p>
+      <p>Posted by: <a class ="color" href="/user_profile/{{favorite.quote.user.id}}">{{favorite.quote.user.name}}</a></p>
+      <p><a class ="color" href="/remove/{{favorite.quote.id}}">Remove</a></p>
+      {% endfor %}
+    </div>
+    
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form action="/submit" method="POST">
+      {% csrf_token %}
+      <div>
+        <h3>Contribute a Quote:</h3>
+      </div>
+      <div>
+        <label>Quoted By:</label>
+        <input type="text" name="quoted_by">
+      </div>
+      <div>
+        <label>Message</label>
+        <textarea name="message" rows="8" cols="40"></textarea>
+      </div>
+      <div>
+        <input type="submit" name="" value="Submit">
+      </div>
+    </form>
+    </div>
+  </body>
+</html>

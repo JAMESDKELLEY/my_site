@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>User Profile</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" text="text/css" href="{% static 'main/css/style.css' %}">
+  </head>
+
+  <div class="wrapper">
+    <p id="navigation"><a class ="color" href="/dashboard">Dashboard</a> | <a class ="color" href="/logout">Logout</a></p>
+  
+  <body>
+    <div>
+    <h3>Posts by: {{user.user.name}}</h3>
+    </div>
+    <div>
+      <h3 class="color">Count: {{count}}</h3>
+    </div>
+    <hr>
+    <div>
+    {% for quote in quotes%}
+      <h3 class="color">{{quote.author}}</h3>
+      <h5>Quote: "{{quote.quote}}"</h5>
+    {% endfor %}
+    </div>
+  </body>
+  </div>
+</html>

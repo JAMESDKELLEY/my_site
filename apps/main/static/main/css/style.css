@@ -1,0 +1,42 @@
+.color {
+	color: white;
+}
+
+.wrapper {
+	background-color: black;
+	color: red;
+	height: 1500px;
+	width: 970px;
+	margin: 0px auto;
+
+}
+
+.header {
+	margin-left: 50px;
+}
+
+.submit_buttons {
+	padding-top: 15px;
+}
+
+#form_field1 {
+	margin-left: 50px;
+	border: 2px solid white;
+	display: inline-block;
+}
+
+#form_field2 {
+	border: 2px solid white;
+	display: inline-block;
+	margin-left: 200px;
+	vertical-align: top;
+}
+
+#navigation {
+
+	margin-left: 800px;
+}
+
+.fields {
+	padding-top: 10px;
+}
